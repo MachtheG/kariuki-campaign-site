@@ -655,6 +655,54 @@
             line-height: 1.8;
         }
 
+        /* Institutions Section */
+        .institution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .institution-card {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1.5px solid var(--border-color);
+            aspect-ratio: 4/5;
+            cursor: pointer;
+        }
+
+        .institution-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .institution-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .institution-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 1.75rem;
+            background: linear-gradient(to top, rgba(2, 13, 26, 0.95) 0%, rgba(2, 13, 26, 0.4) 60%, transparent 100%);
+        }
+
+        .institution-caption h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .institution-caption p {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
         /* Leadership Timeline */
         .timeline {
             position: relative;
@@ -1204,6 +1252,16 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .institution-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 3rem auto 0;
+            }
+
+            .institution-card {
+                aspect-ratio: 16/10;
+            }
+
             .timeline::before {
                 left: 10px;
             }
@@ -1573,7 +1631,7 @@
             </div>
             <div class="hero-right">
                 <div class="hero-image">
-                    <div style="background: linear-gradient(135deg, #0066ff 0%, #00d9d9 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 5rem;">👤</div>
+                    <img src="images/candidate-portrait.jpg" alt="Dr. James Kariuki">
                 </div>
                 <div class="vision-card">
                     <h4>Our Vision</h4>
@@ -1682,6 +1740,40 @@
         </div>
     </section>
 
+    <!-- Institutions Section -->
+    <section class="dark-bg">
+        <div class="section-label">THE INSTITUTIONS</div>
+        <div class="section-title">
+            Reforming <span class="cyan">Kenya's</span><br>
+            <span class="blue">Core Institutions</span>
+        </div>
+        <p class="section-intro">Real change happens where power lives. From the halls of Parliament to the Supreme Court, these are the institutions I will work within, and hold accountable, on behalf of every Kenyan.</p>
+
+        <div class="institution-grid">
+            <div class="institution-card">
+                <img src="images/building-parliament.jpg" alt="Parliament Buildings, Nairobi">
+                <div class="institution-caption">
+                    <h4>Parliament Buildings</h4>
+                    <p>Legislative reform starts here</p>
+                </div>
+            </div>
+            <div class="institution-card">
+                <img src="images/building-supreme-court.jpg" alt="Supreme Court of Kenya">
+                <div class="institution-caption">
+                    <h4>Supreme Court of Kenya</h4>
+                    <p>Justice without fear or favor</p>
+                </div>
+            </div>
+            <div class="institution-card">
+                <img src="images/building-kicc.jpg" alt="Kenyatta International Convention Centre">
+                <div class="institution-caption">
+                    <h4>KICC, Nairobi</h4>
+                    <p>A modern, transparent capital</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Leadership Section -->
     <section id="about" class="dark-bg">
         <div class="section-label">PROFESSIONAL JOURNEY</div>
@@ -1774,7 +1866,7 @@
 
         <div class="speaking-section">
             <div class="speaking-image">
-                <div style="background: linear-gradient(135deg, #0066ff 0%, #00d9d9 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 5rem;">🎤</div>
+                <img src="images/candidate-portrait.jpg" alt="Dr. James Kariuki" style="transform: scaleX(-1);">
             </div>
             <div class="speaking-content">
                 <h2>Advocating for Change</h2>
