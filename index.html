@@ -1,0 +1,1692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. James Kariuki - Building a Better Kenya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #0a1428;
+            --primary-darker: #020d1a;
+            --accent-cyan: #00d9d9;
+            --accent-blue: #0066ff;
+            --accent-blue-light: #1e90ff;
+            --accent-teal: #00b8a9;
+            --text-white: #ffffff;
+            --text-light: #b8c5d6;
+            --border-color: #1e3a4d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 20, 40, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.75rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            height: 90px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--text-white);
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.95rem;
+            line-height: 1.3;
+        }
+
+        .logo-text .name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .logo-text .title {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 3.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .lang-selector {
+            background: rgba(0, 102, 255, 0.15);
+            border: 1.5px solid var(--accent-blue);
+            color: var(--text-white);
+            padding: 0.65rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .lang-selector:hover {
+            background: rgba(0, 102, 255, 0.25);
+        }
+
+        .volunteer-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+            color: var(--primary-dark);
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 217, 217, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .volunteer-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(0, 217, 217, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a1428 0%, #0d3a4d 50%, #0a1428 100%);
+            padding-top: 120px;
+            padding-bottom: 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: visible;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(0, 217, 217, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 0 6%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-left h3 {
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        .hero-left h3::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-left h1 {
+            font-size: 6rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 50%, var(--text-white) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .hero-left > p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .movement-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 180px;
+            height: 180px;
+            border: 3px solid var(--accent-blue);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--accent-blue);
+            position: relative;
+            margin-top: 3rem;
+            box-shadow: 0 0 30px rgba(0, 102, 255, 0.2);
+        }
+
+        .movement-cta:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            box-shadow: 0 0 50px rgba(0, 217, 217, 0.4);
+            transform: scale(1.05);
+        }
+
+        .hero-right {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3/4.2;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 217, 217, 0.08) 100%);
+            border-radius: 24px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 102, 255, 0.2);
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .vision-card {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background: rgba(10, 20, 40, 0.92);
+            backdrop-filter: blur(15px);
+            border: 1.5px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 16px;
+            width: 320px;
+            z-index: 10;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .vision-card h4 {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+
+        .vision-card p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .vision-link:hover {
+            gap: 1.25rem;
+        }
+
+        .social-icons {
+            position: fixed;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 50;
+        }
+
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-white);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .social-icon:hover {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+            transform: translateX(-15px) scale(1.1);
+            box-shadow: 0 8px 30px rgba(0, 217, 217, 0.4);
+        }
+
+        /* Section Container */
+        section {
+            padding: 120px 6%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        section.dark-bg {
+            background: var(--primary-darker);
+        }
+
+        section.accent-bg {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 217, 217, 0.03) 100%);
+        }
+
+        /* Section Headers */
+        .section-label {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+        }
+
+        .section-label::before {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 2px;
+            background: var(--accent-cyan);
+        }
+
+        .section-title {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .section-title .cyan {
+            color: var(--accent-cyan);
+        }
+
+        .section-title .blue {
+            color: var(--accent-blue);
+        }
+
+        .section-title .green {
+            color: var(--accent-teal);
+        }
+
+        .section-intro {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-top: 2rem;
+            max-width: 900px;
+        }
+
+        /* The Movement Section */
+        .movement-section {
+            margin-top: 60px;
+        }
+
+        .movement-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            margin-top: 4rem;
+        }
+
+        .movement-text h3 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        .movement-roles {
+            margin-top: 3rem;
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        .role-item {
+            padding: 2rem;
+            border-left: 4px solid var(--accent-cyan);
+            background: rgba(0, 217, 217, 0.08);
+            border-radius: 12px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .role-item:hover {
+            background: rgba(0, 217, 217, 0.12);
+            transform: translateX(8px);
+        }
+
+        .role-item .role-title {
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+        }
+
+        .role-item .role-desc {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Path Section */
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .path-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.12) 0%, rgba(0, 217, 217, 0.06) 100%);
+            border: 1.5px solid var(--border-color);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .path-card:hover {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.18) 0%, rgba(0, 217, 217, 0.1) 100%);
+            transform: translateY(-8px);
+        }
+
+        .path-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.75rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .path-card h4 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .path-card p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Platform Section */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .platform-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 217, 217, 0.05) 100%);
+            border: 1.5px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 16px;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .platform-card:hover {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 217, 217, 0.08) 100%);
+            transform: translateY(-12px);
+        }
+
+        .platform-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 102, 255, 0.3);
+        }
+
+        .platform-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .platform-card p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Leadership Timeline */
+        .timeline {
+            position: relative;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-cyan), transparent);
+        }
+
+        .timeline-item {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent-cyan);
+            border: 4px solid var(--primary-dark);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(0, 217, 217, 0.4);
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 217, 217, 0.05) 100%);
+            border: 1.5px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover .timeline-content {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 217, 217, 0.08) 100%);
+        }
+
+        .timeline-date {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .value-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.12) 0%, rgba(0, 217, 217, 0.06) 100%);
+            border: 1.5px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 16px;
+            position: relative;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .value-card:hover {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.18) 0%, rgba(0, 217, 217, 0.1) 100%);
+            transform: translateY(-8px);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-cyan);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(0, 217, 217, 0.3);
+        }
+
+        .value-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--accent-cyan);
+            font-size: 1.05rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border-color);
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.2) 0%, rgba(0, 217, 217, 0.12) 100%);
+            border: 2px solid var(--border-color);
+            padding: 5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.35rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .primary-btn, .secondary-btn {
+            padding: 1.2rem 2.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+            color: var(--primary-dark);
+            box-shadow: 0 4px 20px rgba(0, 217, 217, 0.3);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 217, 217, 0.4);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            border: 2.5px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .secondary-btn:hover {
+            background: var(--accent-cyan);
+            color: var(--primary-dark);
+            transform: translateY(-4px);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .comparison-card {
+            padding: 3.5rem;
+            border-radius: 16px;
+            border: 2.5px solid;
+            transition: all 0.3s;
+        }
+
+        .comparison-card.yes {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 217, 217, 0.18) 0%, rgba(0, 217, 217, 0.08) 100%);
+        }
+
+        .comparison-card.yes:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0, 217, 217, 0.3);
+        }
+
+        .comparison-card.no {
+            border-color: #ff1744;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.15) 0%, rgba(255, 23, 68, 0.05) 100%);
+        }
+
+        .comparison-card.no:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(255, 23, 68, 0.3);
+        }
+
+        .comparison-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-label.yes::before {
+            content: '✓';
+            width: 28px;
+            height: 28px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .comparison-label.no::before {
+            content: '✕';
+            width: 28px;
+            height: 28px;
+            background: #ff1744;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .comparison-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-card li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .comparison-card.yes li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .comparison-card.no li::before {
+            content: '✗';
+            position: absolute;
+            left: 0;
+            color: #ff1744;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* Speaking Section */
+        .speaking-section {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .speaking-image {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4.2;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 217, 217, 0.08) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 102, 255, 0.2);
+        }
+
+        .speaking-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .speaking-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .speaking-content > p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .speaking-content ul {
+            list-style: none;
+            margin: 2.5rem 0;
+        }
+
+        .speaking-content li {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: rgba(0, 217, 217, 0.12);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 10px;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.7;
+            transition: all 0.3s;
+        }
+
+        .speaking-content li:hover {
+            background: rgba(0, 217, 217, 0.18);
+            transform: translateX(8px);
+        }
+
+        .speaking-content li strong {
+            color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-darker);
+            border-top: 1.5px solid var(--border-color);
+            padding: 5rem 6%;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 2rem;
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer-section a, .footer-section p {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.05rem;
+            line-height: 2;
+            transition: color 0.3s;
+        }
+
+        .footer-section p {
+            line-height: 1.7;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .footer-bottom {
+            border-top: 1.5px solid var(--border-color);
+            padding-top: 3rem;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full {
+            grid-template-columns: 1fr;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1.25rem;
+            background: rgba(0, 217, 217, 0.08);
+            border: 1.5px solid var(--border-color);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-family: inherit;
+            font-size: 1.05rem;
+            transition: all 0.3s;
+            resize: none;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-light);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: rgba(0, 217, 217, 0.12);
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .contact-info-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 217, 217, 0.05) 100%);
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 217, 217, 0.08) 100%);
+        }
+
+        .contact-info-card > div:first-child {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info-card p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-left h1 {
+                font-size: 4.5rem;
+            }
+
+            .hero-right {
+                order: -1;
+            }
+
+            .vision-card {
+                position: static;
+                transform: none;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .social-icons {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+
+            .movement-content {
+                grid-template-columns: 1fr;
+            }
+
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 80px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: -10px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speaking-section {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem 4%;
+                height: auto;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero {
+                padding-top: 140px;
+            }
+
+            .hero-left h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.8rem;
+            }
+
+            .path-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+
+            .social-icons {
+                gap: 0.75rem;
+            }
+
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <div class="logo-circle">JK</div>
+            <div class="logo-text">
+                <div class="name">DR. JAMES KARIUKI</div>
+                <div class="title">Nairobi County</div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#platform">Platform</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <select class="lang-selector">
+                <option>EN</option>
+                <option>SW</option>
+            </select>
+            <button class="volunteer-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">VOLUNTEER</button>
+        </div>
+    </nav>
+
+    <!-- Social Icons (Fixed on right edge) -->
+    <div class="social-icons">
+        <a href="#" class="social-icon" title="Facebook">f</a>
+        <a href="#" class="social-icon" title="Twitter">𝕏</a>
+        <a href="#" class="social-icon" title="Instagram">📷</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-left">
+                <h3>LET'S BUILD A BETTER KENYA</h3>
+                <h1>JAMES KARIUKI</h1>
+                <p>Healthcare Leader. Advocate for Justice. Independent Candidate for a Better Kenya.</p>
+                <div class="movement-cta" onclick="scrollToSection('platform')">
+                    JOIN THE<br>MOVEMENT
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image">
+                    <div style="background: linear-gradient(135deg, #0066ff 0%, #00d9d9 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 5rem;">👤</div>
+                </div>
+                <div class="vision-card">
+                    <h4>Our Vision</h4>
+                    <p>Healthcare for all Kenyans. Justice without bias. A society built on integrity.</p>
+                    <a href="#vision" class="vision-link">See Our Vision →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="vision" class="dark-bg movement-section">
+        <div class="section-label">THE VISION</div>
+        <div class="section-title">
+            <span class="blue">The Voice</span><br>
+            <span class="cyan">of the People</span>
+        </div>
+        <p class="section-intro">A healthcare professional dedicated to serving Kenya's most vulnerable communities. For over 15 years, I have fought for equitable access to quality healthcare and justice for those ignored by the system.</p>
+
+        <div class="movement-content">
+            <div class="movement-text">
+                <h3>My commitment to Kenya is rooted in real experience, real results, and a genuine belief that every Kenyan deserves better.</h3>
+                <div class="movement-roles">
+                    <div class="role-item">
+                        <div class="role-title">🏥 Lead Medical Officer</div>
+                        <div class="role-desc">Established clinics in underserved areas, reaching over 50,000 patients and setting new standards for accessible healthcare</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-title">📋 Healthcare Policy Advocate</div>
+                        <div class="role-desc">Championed reforms bringing essential medicines to rural Kenya and improving health outcomes across communities</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-title">⚖️ Human Rights Defender</div>
+                        <div class="role-desc">Protected citizens' rights and advocated for transparent governance that serves the people, not the elite</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 2.5rem; font-weight: 700;">Key Achievements</h3>
+                <div class="path-grid">
+                    <div class="path-card">
+                        <div class="path-icon">🏥</div>
+                        <h4>Healthcare Access</h4>
+                        <p>Extended medical services to 15 counties across Kenya, directly improving lives</p>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-icon">👥</div>
+                        <h4>Community Empowerment</h4>
+                        <p>Trained 500+ local health workers in preventive care and community wellness</p>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-icon">📊</div>
+                        <h4>Policy Impact</h4>
+                        <p>Influenced national health policy affecting 5 million Kenyans nationwide</p>
+                    </div>
+                    <div class="path-card">
+                        <div class="path-icon">💪</div>
+                        <h4>Justice Advocacy</h4>
+                        <p>Secured justice for over 200 cases of institutional abuse and corruption</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platform Section -->
+    <section id="platform" class="accent-bg">
+        <div class="section-label">OUR PLATFORM</div>
+        <div class="section-title">
+            A Better <span class="cyan">Kenya</span><br>
+            Starts <span class="blue">Here</span>
+        </div>
+        <p class="section-intro">Together, we will build a country where every Kenyan has access to quality healthcare, fair treatment under the law, and genuine opportunities to thrive. This is not just a campaign—this is a movement for real change.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <div class="platform-icon">🏥</div>
+                <h3>Universal Healthcare</h3>
+                <p>Ensure every Kenyan has access to affordable, quality healthcare regardless of income or location. No one should suffer because they cannot afford medicine.</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">📚</div>
+                <h3>Education Reform</h3>
+                <p>Modernize our education system to equip youth with skills for the 21st century economy. Quality education is the foundation of prosperity.</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">💼</div>
+                <h3>Youth Empowerment</h3>
+                <p>Create pathways for youth employment and entrepreneurship across all sectors. Our young people are our greatest asset.</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">💰</div>
+                <h3>Economic Growth</h3>
+                <p>Build an inclusive economy that lifts communities out of poverty sustainably. Prosperity should be shared by all Kenyans.</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">⚖️</div>
+                <h3>Justice & Rule of Law</h3>
+                <p>Restore faith in our justice system through transparency and accountability. Justice must be blind to wealth and status.</p>
+            </div>
+            <div class="platform-card">
+                <div class="platform-icon">🌱</div>
+                <h3>Sustainable Development</h3>
+                <p>Protect our environment while building prosperity for future generations. We are custodians of Kenya's natural wealth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="about" class="dark-bg">
+        <div class="section-label">PROFESSIONAL JOURNEY</div>
+        <div class="section-title">
+            <span class="cyan">Leadership</span> &<br>
+            <span class="blue">Service</span>
+        </div>
+        <p class="section-intro">My career has been defined by a commitment to excellence and a dedication to serving those who need it most. Every role, every decision, has been guided by a single principle: putting people first.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2015 - 2020</div>
+                    <div class="timeline-title">Lead Medical Officer</div>
+                    <div class="timeline-desc">Established and managed 8 health centers across underserved regions, pioneering community-centered care models that improved patient outcomes by 65%</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2019 - 2022</div>
+                    <div class="timeline-title">Healthcare Policy Advisor</div>
+                    <div class="timeline-desc">Worked with Ministry of Health to draft policies improving drug access and healthcare delivery in rural areas, benefiting millions of Kenyans</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2021 - Present</div>
+                    <div class="timeline-title">Human Rights Commission Member</div>
+                    <div class="timeline-desc">Investigated cases of institutional abuse and advocated for victims' rights and institutional accountability across Kenya</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-title">Independent Candidate</div>
+                    <div class="timeline-desc">Running for Nairobi County office with a commitment to transparent, accountable, and people-centered leadership that truly serves all</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="accent-bg">
+        <div class="section-label">CORE VALUES</div>
+        <div class="section-title">
+            <span class="cyan">Integrity,</span><br>
+            <span class="blue">Accountability,</span><br>
+            Justice
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🔐</div>
+                <h3>Integrity</h3>
+                <p>I have consistently put the people's interests above personal gain. Every decision I make is guided by a commitment to honesty and ethical leadership.</p>
+                <div class="quote">"Integrity is not negotiable. It is the foundation of trust, and trust is everything."</div>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">📋</div>
+                <h3>Accountability</h3>
+                <p>As a public servant, I am accountable to the people I serve. I am transparent in my actions and welcome scrutiny as proof of my commitment.</p>
+                <div class="quote">"The people deserve leaders who answer to them, not to special interests or hidden agendas."</div>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">⚖️</div>
+                <h3>Justice</h3>
+                <p>Every Kenyan deserves equal access to justice and fair treatment. I have fought for the marginalized and will continue to do so as your representative.</p>
+                <div class="quote">"Justice delayed is justice denied. We must act now and act decisively."</div>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Service</h3>
+                <p>Public service is an honor and a responsibility. I am committed to serving all Kenyans with dedication, empathy, and unwavering commitment.</p>
+                <div class="quote">"Service to others is the highest calling of a leader and the greatest privilege."</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speaking Section -->
+    <section id="news" class="dark-bg">
+        <div class="section-label">IN THE FIELD</div>
+        <div class="section-title">
+            <span class="cyan">Speaking</span><br>
+            <span class="blue">For the People</span>
+        </div>
+
+        <div class="speaking-section">
+            <div class="speaking-image">
+                <div style="background: linear-gradient(135deg, #0066ff 0%, #00d9d9 100%); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 5rem;">🎤</div>
+            </div>
+            <div class="speaking-content">
+                <h2>Advocating for Change</h2>
+                <p>For over a decade, I have been on the ground, listening to Kenyans' stories and fighting for their rights. My work spans healthcare, justice, and community development. I have built movements, championed policies, and secured victories for ordinary people.</p>
+                <ul>
+                    <li><strong>Healthcare Campaigns:</strong> Reached over 100,000 citizens with free medical screenings, health education, and life-saving interventions</li>
+                    <li><strong>Justice Advocacy:</strong> Mobilized communities to demand accountability from institutions and prosecute those who victimize the vulnerable</li>
+                    <li><strong>Policy Engagement:</strong> Testified before Parliament on healthcare reform and human rights, influencing national legislation</li>
+                    <li><strong>Community Organizing:</strong> Built grassroots movements empowering citizens to participate in governance and demand transparency</li>
+                </ul>
+                <div style="margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="primary-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">JOIN THE MOVEMENT</button>
+                    <button class="secondary-btn">LEARN MORE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vote Section -->
+    <section class="accent-bg">
+        <div class="section-label">YOUR CHOICE</div>
+        <div class="section-title">
+            <span class="cyan">Vote</span> for <span class="blue">Change</span><br>
+            Vote for <span class="cyan">Kariuki</span>
+        </div>
+        <p class="section-intro">Let us make this election a genuine choice between the old ways of corruption and cronyism, and a new vision of transparent, accountable leadership grounded in the people's needs. The time for change is now.</p>
+
+        <div class="comparison-grid">
+            <div class="comparison-card yes">
+                <div class="comparison-label yes">Reform & Change</div>
+                <h3>A New Kenya</h3>
+                <ul>
+                    <li>Universal healthcare for all Kenyans</li>
+                    <li>Transparent and accountable governance</li>
+                    <li>Real jobs and economic opportunity</li>
+                    <li>Justice without fear or favor</li>
+                    <li>Community-centered development</li>
+                </ul>
+            </div>
+            <div class="comparison-card no">
+                <div class="comparison-label no">Business as Usual</div>
+                <h3>The Old System</h3>
+                <ul>
+                    <li>Healthcare only for the privileged few</li>
+                    <li>Corruption and self-serving interests</li>
+                    <li>Limited opportunities for youth</li>
+                    <li>Justice delayed indefinitely</li>
+                    <li>Elite-driven, top-down decisions</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Be Part of the Change?</h2>
+            <p>The time for a new Kenya is now. Join us in building a country where every citizen has a voice, where healthcare is a right, and where justice is served to all fairly and transparently.</p>
+            <button class="primary-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">GET INVOLVED →</button>
+            <button class="secondary-btn">DONATE</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="dark-bg">
+        <div class="section-label">STAY CONNECTED</div>
+        <div class="section-title">
+            Get <span class="cyan">In Touch</span>
+        </div>
+
+        <div class="contact-form">
+            <form style="display: grid; gap: 1.5rem;">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" style="padding: 1.25rem; background: rgba(0,217,217,0.05); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-white); font-size: 1.05rem;">
+                    <input type="email" placeholder="Your Email" style="padding: 1.25rem; background: rgba(0,217,217,0.05); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-white); font-size: 1.05rem;">
+                </div>
+                <div class="form-group full">
+                    <input type="text" placeholder="Subject" style="padding: 1.25rem; background: rgba(0,217,217,0.05); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-white); font-size: 1.05rem;">
+                </div>
+                <div class="form-group full">
+                    <textarea placeholder="Your Message" rows="8" style="padding: 1.25rem; background: rgba(0,217,217,0.05); border: 1.5px solid var(--border-color); border-radius: 8px; color: var(--text-white); font-family: inherit; resize: none; font-size: 1.05rem;"></textarea>
+                </div>
+                <button type="button" class="primary-btn" style="width: 100%; justify-content: center; cursor: pointer; padding: 1.3rem 2rem; font-size: 1.15rem;">SEND MESSAGE</button>
+            </form>
+
+            <div class="contact-info-grid">
+                <div class="contact-info-card">
+                    <div>📧</div>
+                    <p><strong>Email</strong><br>hello@jameskairiuki.com</p>
+                </div>
+                <div class="contact-info-card">
+                    <div>📱</div>
+                    <p><strong>Phone</strong><br>+254 (0) 700 000 000</p>
+                </div>
+                <div class="contact-info-card">
+                    <div>📍</div>
+                    <p><strong>Location</strong><br>Nairobi, Kenya</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Dr. Kariuki</h4>
+                <p>Dr. James Kariuki is an independent candidate committed to building a better Kenya through universal healthcare, justice, and transparent leadership that serves all people, not the few.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#vision">Vision</a>
+                <a href="#platform">Platform</a>
+                <a href="#about">About</a>
+                <a href="#news">News</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <a href="#">Volunteer</a>
+                <a href="#">Donate</a>
+                <a href="#">Get Updates</a>
+                <a href="#">Share</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Dr. James Kariuki - Building a Better Kenya. All rights reserved. | <a href="#" style="color: var(--accent-cyan);">Privacy Policy</a> | <a href="#" style="color: var(--accent-cyan);">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.borderBottomColor = 'rgba(0, 217, 217, 0.15)';
+                nav.style.background = 'rgba(10, 20, 40, 0.98)';
+            } else {
+                nav.style.borderBottomColor = 'var(--border-color)';
+                nav.style.background = 'rgba(10, 20, 40, 0.95)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
